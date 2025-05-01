@@ -11,7 +11,15 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 """
 
 from pathlib import Path
-CORS_ALLOW_ALL_ORIGINS = True  # Geliştirme için uygundur
+
+CORS_ALLOW_ALL_ORIGINS = False  
+CORS_ALLOWED_ORIGINS = [
+    "https://23ba-5-46-148-219.ngrok-free.app",
+    "http://localhost:8000",  # veya başka adresler
+]
+CSRF_TRUSTED_ORIGINS = [
+    'https://23ba-5-46-148-219.ngrok-free.app'
+]
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -25,12 +33,12 @@ SECRET_KEY = 'django-insecure-0i4p4)dk%&mu#ko_as%d4a$%plj%)j3fn_geul&)nz22e3-zn2
 
 # SECURITY WARNING: don't run
 #  with debug turned on in production!
-DEBUG = False
+DEBUG = True
 ALLOWED_HOSTS = [
-    # 'localhost',
-    # '127.0.0.1',
-    # '9a4b-151-135-207-44.ngrok-free.app',  # Ngrok URL'ni buraya ekle
-    'your-service-name.onrender.com'
+    '23ba-5-46-148-219.ngrok-free.app',  # Ngrok URL
+    '127.0.0.1',# 'https://trasbure-backend.onrender.com'
+    'localhost'
+    # '*'
 ]
 
 
@@ -59,6 +67,7 @@ MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware',
 
 ]
+
 
 ROOT_URLCONF = 'backend_trashure.urls'
 
@@ -90,10 +99,6 @@ DATABASES = {
         'NAME': BASE_DIR / 'db_trashure.db',
     }
 }
-
-# CORS_ALLOWED_ORIGINS = [
-#     "http://192.168.37.205:8000",
-# ]
 
 
 
